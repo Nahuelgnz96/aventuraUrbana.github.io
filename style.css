@@ -61,3 +61,6 @@
   cursor: pointer;
 }
 
+.leaflet-top{
+  margin-top: 25vh;
+}

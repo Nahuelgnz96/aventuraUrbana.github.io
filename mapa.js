@@ -55,7 +55,7 @@ var museoMarker;
 var bibliotecaMarker;
 var miCasaMarker;
 var ruta;
-
+var coordenadasMiUbicacion; // Variable para almacenar las coordenadas de tu ubicación actual
 var lugarActual;
 var indicePreguntaActual = 0;
 var puntosTotales = 0;
@@ -163,6 +163,10 @@ function verificarUbicacion(posicion) {
         card.style.display = "none";
     });
     }
+    coordenadasMiUbicacion = {
+        latitud: latitud,
+        longitud: longitud
+      };
     if (lugarActual && preguntas[lugarActual] && preguntas[lugarActual].length > 0) {
         indicePreguntaActual = 0; // Reiniciar el índice de pregunta actual
         puntosTotales = 0; // Reiniciar los puntos totales
@@ -355,7 +359,7 @@ function mostrarRuta(coordenadasDestino) {
     // Crear el objeto de ruta con las coordenadas de origen y destino
     ruta = L.Routing.control({
       waypoints: [
-        L.latLng(coordenadasMiCasa.latitud, coordenadasMiCasa.longitud), // Coordenadas de origen (tu ubicación actual)
+        L.latLng(coordenadasMiUbicacion.latitud, coordenadasMiUbicacion.longitud), // Coordenadas de origen (tu ubicación actual)
         L.latLng(coordenadasDestino.latitud, coordenadasDestino.longitud) // Coordenadas del destino seleccionado
       ],
       routeWhileDragging: true,
