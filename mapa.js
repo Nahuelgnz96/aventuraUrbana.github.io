@@ -333,6 +333,11 @@ var lugaresFaltantes = Object.keys(preguntas).filter(function(lugar) {
   
   // Obtener el botón para ir al destino
   var btnIrDestino = document.getElementById("btnIrDestino");
+  // Obtener el elemento del panel de navegación
+    var navbarToggler = document.querySelector(".navbar-toggler");
+
+    // Cerrar el panel de navegación
+    navbarToggler.click();
   
   // Agregar un controlador de eventos al botón de ir al destino
   btnIrDestino.addEventListener("click", function() {
@@ -348,6 +353,9 @@ var lugaresFaltantes = Object.keys(preguntas).filter(function(lugar) {
       // Mostrar la ruta en el mapa o realizar otras acciones con las coordenadas del destino
       mostrarRuta(coordenadasDestino);
     }
+    // Cerrar el panel de navegación (toggler)
+    var navbarToggler = document.querySelector(".navbar-toggler");
+    navbarToggler.click();
   });
 // Función para mostrar la ruta en el mapa
 function mostrarRuta(coordenadasDestino) {

@@ -5,7 +5,7 @@
 }
 .map-controls {
   position: absolute;
-  top: 85%;
+  top: 80%;
   right: 10px;
   z-index: 9999; /* Ajusta el valor del z-index según sea necesario */
 }
@@ -15,13 +15,7 @@
   margin-bottom: 5px; /* Ajusta el espaciado vertical entre los botones */
 }
 
-.fixed-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-}
+
 
 .btn-responder {
   position: absolute;
@@ -61,6 +55,3 @@
   cursor: pointer;
 }
 
-.leaflet-top{
-  margin-top: 25vh;
-}
