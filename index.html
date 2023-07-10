@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2df137ad92.js" crossorigin="anonymous"></script>
+    <title>MAPA</title>
+     <!-- Incluye Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Incluye leaflet-routing-machine -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+<!-- Incluye leaflet-control-geocoder -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-nav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="nav-link active" id="puntos">Puntos: 0</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+              </li>
+              <li class="nav-item dropdown">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <select id="destinoSelect" class="form-select">
+                        <option value="">Seleccione un destino</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn btn-primary" id="btnIrDestino">Ir</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <button class="btn btn-primary btn-responder" id="btnMostrarModal" style="display: none;">Mostrar preguntas</button>
+      <div class="container-fluid" id="map">
+        <div class="map-controls">
+          <!-- Aquí agregarás los botones y otros elementos de control -->
+          
+          <button class="btn btn-primary" id="btnUbicacion"><i class="fas fa-location-crosshairs"></i></button>
+
+
+          
+          <!-- Agrega más botones u otros elementos según tus necesidades -->
+        </div>
+      </div>
+      <div id="preguntaModal"  class="modal">
+        <div class="modal-content" id="modalContent">
+            <span class="close close-button">&times;</span>
+            <h2 id="pregunta" class="text-center"></h2>
+            <div id="opciones" class="ms-5"></div>
+            <button id="btnresp" onclick="responder()">Responder</button>
+            <p id="correcta" class="text-center mt-3" style="display: none;">Correcta +10 pts</p>
+            <p id="mensajeRespuesta" class="text-center mt-3" style="display: none;">Ya has respondido estas preguntas. Debes ir a uno de los puntos que aparecen en el mapa para ver las preguntas.</p>
+        </div>
+        
+      </div>
+      <div class="card text-center" id="cardAlert" style="display: none;">
+        <div class="card-header text-center">
+          Alerta!
+        </div>
+        <div class="card-body" >
+          <p class="card-text text-center">Debes ir a uno de los puntos en el mapa para ver las preguntas.</p>
+          <a id="btnOk" class="btn btn-primary ">OK!</a>
+        </div>
+      </div>
+      <div class="card text-center" id="cardSiguiente" style="display: none;">
+        <div class="card-header text-center">
+          Bien!
+        </div>
+        <div class="card-body" id="cardSiguienteContent" >
+          <p class="card-text text-center">Ahora debes ir a uno de los siguientes puntos en el mapa para ver las otras preguntas</p>
+          <a id="btnSiguiente" class="btn btn-primary ">OK!</a>
+        </div>
+      </div>
+    
+      <script src="mapa.js"></script>
+      
+</body>
+</html>
